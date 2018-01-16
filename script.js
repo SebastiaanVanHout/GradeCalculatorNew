@@ -11,6 +11,8 @@ function disappear(){
     document.getElementById("6").value ="26"
     document.getElementById("7").value ="27"
     document.getElementById("8").value ="23"
+    document.getElementById("9").value ="90"
+    document.getElementById("10").value ="40"
 }
 function start() {
     var points = [];
@@ -30,6 +32,11 @@ function start() {
     for(var o=0; o<final.length; o++){
         ultimateFinalGrade += final[o];
     }
+    var extra = document.getElementById("10").value;
+    extra = parseInt(extra);
+    var y = document.getElementById("9").value;
+    y = parseInt(y);
+    var math = extra/100;
     if(ultimateFinalGrade < 60){
         var letter = "F";
         document.body.style.backgroundColor = "red";
@@ -53,7 +60,6 @@ function start() {
     if(ultimateFinalGrade >=97){
         var letter = "A+";
         document.body.style.backgroundColor = "darkgreen";
-
     }
     if(isNaN(ultimateFinalGrade)){
         alert("Point and weight values must be numbers");
@@ -69,6 +75,8 @@ function start() {
     if(ultimateFinalGrade>100){
         alert("Final grade is over 100%. Make sure you have entered the point and weight values correctly.");
     }
+    var gradeNeeded =  (y-(1-math)*ultimateFinalGrade)/math;
+    document.getElementById("g6").innerHTML ='<p>Grade Needed On Final:</p>'+'<p>' + gradeNeeded +"%"+'</p>';
     document.getElementById("g5").innerHTML ='<p>Final Grade:</p>'+'<p>'+ letter +"     (" + ultimateFinalGrade +"%)"+'</p>';
     var classLoop = document.getElementsByClassName("grades").length;
     for(var u=0; u<classLoop; u++) {
